@@ -11,6 +11,7 @@
       </Transition>
     </router-view>
     <FloatingThemeToggle />
+    <Toaster />
   </div>
 </template>
 
@@ -20,6 +21,10 @@ import LoadingSpinner from '@/components/custom/LoadingSpinner.vue';
 import FloatingThemeToggle from '@/components/commons/FloatingThemeToggle.vue';
 import { useLoadingStore } from '@/stores/loading';
 import { useThemeStore } from '@/stores/theme';
+
+
+import { Toaster } from '@/components/ui/sonner'
+
 
 const loadingStore = useLoadingStore();
 const themeStore = useThemeStore();
