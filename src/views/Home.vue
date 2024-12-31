@@ -46,6 +46,14 @@
         >
           Add to calendar
         </Button>
+
+
+
+        <div class="space-y-4">
+          <LoadingButton :loading="loading" @click="handleClick">
+    Save Changes
+  </LoadingButton>
+  </div>
       </div>
     </div>
   </div>
@@ -54,17 +62,33 @@
 <style scoped></style>
 
 <script setup lang="ts">
+import { ref } from 'vue'
 import { LogIn, UserPlus, LayoutDashboard } from "lucide-vue-next";
 import { Button } from "@/components/ui/button";
 import { toast } from "vue-sonner";
 
+
 import { useAuthStore } from "@/stores/auth";
 const authStore = useAuthStore();
 
-function showToast() {
-  toast({
-    title: "Scheduled: Catch up",
-    description: "Friday, February 10, 2023 at 5:57 PM",
-  });
+import LoadingButton from '@/components/commons/LoadingButton.vue'
+
+const loading = ref(false)
+
+const handleClick = async () => {
+  loading.value = true
+  try {
+    await new Promise(resolve => setTimeout(resolve, 2000))
+  } finally {
+    loading.value = false
+  }
 }
+
+
+// function showToast() {
+//   toast({
+//     title: "Scheduled: Catch up",
+//     description: "Friday, February 10, 2023 at 5:57 PM",
+//   });
+// }
 </script>
